@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Microsoft.VisualBasic;
 
 namespace espacioTarea;
 public class Tarea{
@@ -10,9 +11,9 @@ public class Tarea{
     public string Titulo{get; set;}
     [JsonPropertyName("completed")]
     public bool Completo{get; set;}
-
+    public string Estado{get; set;}
     public string mostrarPorPantalla()
     {
-        return $"Id Usuario: {UsuarioId} ID: {ID} Titulo: {Titulo} Estado completo: {Completo}";
+        return $"Titulo: {Titulo, -80} | Estado : {Estado, -10} ";
     }
 }
