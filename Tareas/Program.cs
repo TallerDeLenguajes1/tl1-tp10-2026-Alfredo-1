@@ -16,8 +16,8 @@ MostrarTareas(tareasCompletas);
 Console.WriteLine("\n     ----------------------\n-----| Tareas Pendientes |-----\n     ----------------------\n");
 MostrarTareas(tareasPendientes);
 //serealizo la lista
-string salidaJson = JsonSerializer.Serialize(tareas);
-Console.WriteLine(salidaJson);
+string JsonAGuardar = JsonSerializer.Serialize(tareas);
+guardarArchivo(JsonAGuardar);
 
 Console.WriteLine("\n\nfin programa\n");
 
@@ -42,4 +42,19 @@ void FiltrarLista (List<Tarea> tareas, List<Tarea> tareasCompletas, List<Tarea> 
             tareasPendientes.Add(tarea);
         }
     }
+}
+
+void guardarArchivo(string archivo)
+{
+    string hubicacion = Directory.GetCurrentDirectory();
+    string rutaArchivo = Path.Combine(hubicacion, "tareas.json");
+    if (File.Exists(rutaArchivo))
+    {
+        Console.WriteLine("\nEl archivo ya existe...\n");
+    }else
+    {
+        File.WriteAllText(rutaArchivo, archivo);
+        Console.WriteLine("\nSe creo exitosamente el archivo\n");
+    }
+        
 }
