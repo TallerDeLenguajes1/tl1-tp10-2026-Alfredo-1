@@ -12,6 +12,7 @@ public class ConsultasAPI
         respuesta.EnsureSuccessStatusCode();
         //guardo el cuerpo de la respuesta
         string respuestaJSON = await respuesta.Content.ReadAsStringAsync();
+        //descerealizo la lista para que pueda leearla
         List<Tarea> tareas = JsonSerializer.Deserialize<List<Tarea>>(respuestaJSON);
         
         return tareas;

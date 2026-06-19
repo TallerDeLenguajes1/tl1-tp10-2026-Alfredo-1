@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using System.Linq.Expressions;
+using System.Text.Json;
 using espacioTarea;
 
 var url = "https://jsonplaceholder.typicode.com/todos/";
@@ -13,6 +15,9 @@ Console.WriteLine("\n     --------------------\n-----| Tareas Completas |-----\n
 MostrarTareas(tareasCompletas);
 Console.WriteLine("\n     ----------------------\n-----| Tareas Pendientes |-----\n     ----------------------\n");
 MostrarTareas(tareasPendientes);
+//serealizo la lista
+string salidaJson = JsonSerializer.Serialize(tareas);
+Console.WriteLine(salidaJson);
 
 Console.WriteLine("\n\nfin programa\n");
 
@@ -30,14 +35,11 @@ void FiltrarLista (List<Tarea> tareas, List<Tarea> tareasCompletas, List<Tarea> 
     foreach(var tarea in tareas)
     {
         if(tarea.Completo)
-        {   //si tarea esta commpleta le agrego un estado que diga Completada.
-            tarea.Estado ="Completada";
+        {
             tareasCompletas.Add(tarea);
         }else
-        {   //si la tarea aun no se completo, su estado dira Pendiente.
-            tarea.Estado="Pendiente";
+        {
             tareasPendientes.Add(tarea);
         }
     }
 }
-

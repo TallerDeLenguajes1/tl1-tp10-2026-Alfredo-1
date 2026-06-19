@@ -11,9 +11,21 @@ public class Tarea{
     public string Titulo{get; set;}
     [JsonPropertyName("completed")]
     public bool Completo{get; set;}
-    public string Estado{get; set;}
+    
+    public string Estado()
+    {
+        string estado;
+        if (Completo)
+        {
+            estado = "Completada";
+        }else
+        {
+            estado = "Pendiente";
+        }
+        return estado;
+    }
     public string mostrarPorPantalla()
     {
-        return $"Titulo: {Titulo, -80} | Estado : {Estado, -10} ";
+        return $"Titulo: {Titulo, -80} | Estado : {Estado(), -10} ";
     }
 }
