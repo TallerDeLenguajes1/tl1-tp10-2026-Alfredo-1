@@ -11,13 +11,6 @@ public class Tarea{
     [JsonPropertyName("completed")]
     public bool Completo{get; set;}
 
-    /*public Tarea(int idUsuario, int id, string titulo, bool completa)
-    {
-        UsuarioId = idUsuario;
-        ID = id;
-        Titulo = titulo;
-        Completo = completa;
-    }*/
     public string mostrarPorPantalla()
     {
         return $"Id Usuario: {UsuarioId} ID: {ID} Titulo: {Titulo} Estado completo: {Completo}";
