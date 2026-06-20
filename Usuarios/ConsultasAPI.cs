@@ -2,10 +2,10 @@ using espacioUsuario;
 using System.Text.Json;
 public class ConsultasAPI
 {
+    // Creamos una única instancia estática de HttpClient para toda la aplicación
+    private static HttpClient cliente = new HttpClient();
     public async Task<List<Usuario>> ObtenerTareas(string url)
     {
-        //creamos una instancia de httpClient
-        HttpClient cliente = new HttpClient();
         //envio una solicitud get a la url
         HttpResponseMessage respuesta = await cliente.GetAsync(url);
         //verifica si la peticion HTTP fue exitosa
