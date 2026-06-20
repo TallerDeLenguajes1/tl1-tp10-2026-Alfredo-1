@@ -3,10 +3,10 @@ namespace espacioLocalizacion;
 public class Localizacion
 {
     [JsonPropertyName("lat")]
-    public double Latitud {get; set;}
+    public string Latitud {get; set;}
 
     [JsonPropertyName("lng")]
-    public double Longitud {get; set;}
+    public string Longitud {get; set;}
 
 }
 /*

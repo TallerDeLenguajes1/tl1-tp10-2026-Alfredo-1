@@ -20,13 +20,18 @@ public class Usuario
     public Direccion direccion {get; set;} = new Direccion();
 
     [JsonPropertyName("phone")]
-    public long Telefono {get; set;}
+    public string Telefono {get; set;}
 
     [JsonPropertyName("website")]
     public string SitioWeb {get; set;}
     
     [JsonPropertyName("company")]
     public Empresa empresa {get; set;} = new Empresa();
+
+    public string mostrarUsuarios()
+    {
+        return $" ----------------------------------------------¬\n|Nombre: {Nombre,-38}|\n|Correo Electronico: {Correo,-26}|\n|Direccion:\n|    Calle: {direccion.Calle,-35}|\n|    Ciudad: {direccion.Ciudad,-34}|\n|    Codigo Postal: {direccion.CodigoPostal,-27}|\n|    Departamento: {direccion.Departamento, -28}|\n|    Localizacion:\n|       Lat: {direccion.GeoLocalizacion.Latitud, -34}|\n|       Long: {direccion.GeoLocalizacion.Longitud, -33}|\n|----------------------------------------------|\n";
+    }
 }
 /*
 {
