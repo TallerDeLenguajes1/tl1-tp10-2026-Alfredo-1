@@ -9,7 +9,6 @@ ConsultasAPI cliente = new ConsultasAPI();
 List<Tarea> tareas = await cliente.ObtenerTareas(url);
 List<Tarea> tareasCompletas = new List<Tarea>();
 List<Tarea> tareasPendientes = new List<Tarea>();
-//MostrarTareas(tareas);
 FiltrarLista(tareas, tareasCompletas, tareasPendientes);
 Console.WriteLine("\n     --------------------\n-----| Tareas Completas |-----\n     --------------------\n");
 MostrarTareas(tareasCompletas);
