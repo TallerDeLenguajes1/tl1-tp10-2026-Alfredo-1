@@ -7,6 +7,6 @@ public class Chistes
     public int id {get; set;}
     public string mostrarChistePorPantalla()
     {
-        return $"Chiste n°: {id}.\nTipo: {type}\nIntro: {setup}.\nRemate: {punchline}.\n";
+        return $"Intro: {setup}.\nRemate: {punchline}.\n";
     }
 }
