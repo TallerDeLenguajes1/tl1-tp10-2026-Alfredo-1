@@ -1,4 +1,5 @@
-﻿using espacioChistes;
+﻿using System.Text.Json;
+using espacioChistes;
 
 var url = "https://official-joke-api.appspot.com/random_ten";
 
@@ -17,6 +18,10 @@ await traduccionChiste(chistes, cliente);
 FiltrarLista(chistes, General, Programacion, KnockKnock, Padres);
 //mostrara solo las listas que tengan chistes
 MostrarChistes(General, Programacion, KnockKnock, Padres);
+//serializo la lista de chistes
+string JsonAGuardar = JsonSerializer.Serialize(chistes);
+//guarda el archivo en el path del programa
+guardarArchivo(JsonAGuardar, "chistesMalos.json");
 
 void FiltrarLista (List<Chistes> chistes, List<Chistes> general, List<Chistes> programacion,List<Chistes> knocKnock, List<Chistes> padres)
 {
@@ -80,10 +85,24 @@ static void MostrarChistes(List<Chistes> general, List<Chistes> programacion,Lis
 
 async Task traduccionChiste(List<Chistes>chistes, ConsultasAPI cliente)
 {   
-    Console.WriteLine("\nTraduciendo los chites espere un momento...\n");
+    Console.WriteLine("\nTraduciendo los chistes espere un momento...\n");
     foreach (var chiste in chistes)
     {
         chiste.setup = await cliente.TraducirChistes(chiste.setup);
         chiste.punchline = await cliente.TraducirChistes(chiste.punchline);
     }
+}
+void guardarArchivo(string archivo, string nombreArch)
+{
+    string hubicacion = Directory.GetCurrentDirectory();
+    string rutaArchivo = Path.Combine(hubicacion, nombreArch);
+    if (File.Exists(rutaArchivo))
+    {
+        Console.WriteLine("\nEl archivo ya existe...\n");
+    }else
+    {
+        File.WriteAllText(rutaArchivo, archivo);
+        Console.WriteLine("\nSe creo exitosamente el archivo\n");
+    }
+        
 }
